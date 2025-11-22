@@ -346,7 +346,8 @@ def accuracy_reward_with_llm(completions, solution, question, **kwargs):
     Returns:
         list[bool]: 每个 prompt 的处理结果（True/False）
     """
-    base_url = "http://yq01-inf-hic-k8s-a100-aa24-0020.yq01.baidu.com:8081/v1"
+    # set your judeger url and api key
+    base_url = ""
     api_key = "-"
     system_prompt = """
     You are an intelligent chatbot designed for evaluating the correctness of generative outputs for question-answer pairs.
