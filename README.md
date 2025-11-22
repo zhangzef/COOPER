@@ -67,6 +67,7 @@ sh ./scripts/train_reason_interleave_grpo.sh
 
 ```bash
 # you can edit the eval config in /VLMEvalKit/eval_cfg/bagel_with_judge.json
+# set your openai api key in eval_bagel_with_judge.sh and /VLMEvalKit/.env first
 cd VLMEvalKit
 sh eval_bagel_with_judge.sh
 ```
