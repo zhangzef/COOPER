@@ -1,0 +1,55 @@
+{
+    "model": {
+        "BAGEL-PE": {
+            "class": "BagelInference",
+            "model_config_path": "../models/BAGEL-7B-MoT",
+            "model_param_path": "../results/20250908_001731_mix/0006000",
+            "reasoning_mode": "image",
+            "max_think_token_n": 256,
+            "is_ema": true,
+            "save_file": "Perception_Ehancement"
+        },
+        "BAGEL-RE": {
+            "class": "BagelInference",
+            "model_config_path": "../models/BAGEL-7B-MoT",
+            "model_param_path": "../results/reason_text_grpo_20251028_163030/checkpoint-20",
+            "reasoning_mode": "text",
+            "max_think_token_n": 4096,
+            "is_ema": false
+        },
+        "COOPER": {
+            "class": "BagelInference",
+            "model_config_path": "../models/BAGEL-7B-MoT",
+            "model_param_path": "../results/reason_text_grpo_20251028_163030/checkpoint-20",
+            "reasoning_mode": "interleave",
+            "max_think_token_n": 4096,
+            "is_ema": false
+        }
+    },
+    "data": {
+        "SIBench_Single_Image": {
+            "class": "SIBenchSingleImage",
+            "dataset": "SIBench_Single_Image"
+        },
+        "SIBench_Single_Image_MINI": {
+            "class": "SIBenchSingleImage",
+            "dataset": "SIBench_Single_Image_MINI"
+        },
+        "MMBench_V11_MINI": {
+            "class": "ImageMCQDataset",
+            "dataset": "MMBench_V11_MINI"
+        },
+        "MMVP": {
+            "class": "ImageMCQDataset",
+            "dataset": "MMVP"
+        },
+        "QSpatial_plus": {
+            "class": "QSpatial",
+            "dataset": "QSpatial_plus"
+        },
+        "MMVet": {
+            "class": "MMVet",
+            "dataset": "MMVet"
+        }
+    }
+}
