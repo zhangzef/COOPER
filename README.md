@@ -116,11 +116,7 @@ You can find more cases in the `./assests` folder.
 
 
 
-![depth_mini](./assests/depth_mini.jpg)
-
-
-
-![seg_mini](./assests/seg_mini.jpg)
+![generation_cases](./assests/generation_cases.png)
 
 
 ## ✍️ Citation
