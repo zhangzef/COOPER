@@ -1,6 +1,13 @@
 # COOPER 🧭
 
-This project implements **COOPER**, a unified multimodal large language model for visual spatial intelligence that cooperatively couples perception and reasoning. Initially developed on top of the **BAGEL** framework to endow a single model with intrinsic perception enhancement (depth estimation, semantic segmentation) and reasoning enhancement via multimodal chain-of-thought, we further extend COOPER with reinforcement learning and a cooperative perception–reasoning reward to adaptively decide when to “perceive” and when to “reason” during inference.
+<p align="center">
+  📄 <b>Paper (Coming Soon)</b> |
+  🤖 <a href="https://huggingface.co/Starrrrrry/COOPER">COOPER Model</a> |
+  🧠 <a href="https://huggingface.co/Starrrrrry/COOPER-AMG">COOPER-AMG Model</a> |
+  📂 <a href="https://huggingface.co/datasets/Starrrrrry/COOPER_Train_Set">COOPER Training Data</a>
+</p>
+
+This project is the official implements **COOPER**, a unified multimodal large language model for visual spatial intelligence that cooperatively couples perception and reasoning. Initially developed on top of the **BAGEL** framework to endow a single model with intrinsic perception enhancement (depth estimation, semantic segmentation) and reasoning enhancement via multimodal chain-of-thought, we further extend COOPER with reinforcement learning and a cooperative perception–reasoning reward to adaptively decide when to “perceive” and when to “reason” during inference.
 
 ![motivation](./assests/motivation.png)
 
@@ -50,18 +57,19 @@ pip install -e ./trl
 
 ```bash
 cd models
-# download the pretrained BAGEL and its config files
+# Download the pretrained BAGEL and its config files.
 huggingface-cli download --resume-download --local-dir-use-symlinks False ByteDance-Seed/BAGEL-7B-MoT --local-dir BAGEL-7B-MoT
 
-# not necessary
-# download the COOPER-AMG ckpt(training with Auxiliary Modality Generation)
+# Not Necessary
+# Download the COOPER-AMG ckpt(training with Auxiliary Modality Generation).
 huggingface-cli download --resume-download --local-dir-use-symlinks False Starrrrrry/COOPER-AMG --local-dir COOPER-AMG
 
-# not necessary
-# download the COOPER ckpt if you want to inference with COOPER
+# Not Necessary
+# Download the COOPER ckpt if you want to inference with COOPER.
 huggingface-cli download --resume-download --local-dir-use-symlinks False Starrrrrry/COOPER --local-dir COOPER
 
-# download the training data(without Hypersim)
+# Download the training data(without Hypersim).
+# If you want to train the COOPER-AMG, you need to download the Hypersim dataset first(https://github.com/apple/ml-hypersim).
 cd ..
 huggingface-cli download --resume-download --repo-type dataset Starrrrrry/COOPER_Train_Set --local-dir datasets
 cd datasets
@@ -78,14 +86,14 @@ cat COOPER_Train_Set.tar.gz.part.* | gzip -dc | tar xf -
 ### 🏋️ Train
 
 ```bash
-# training for Auxiliary Modality Generation from BAGEL
-# or you can download the COOPER-AMG directly
+# Training for Auxiliary Modality Generation from BAGEL.
+# Or you can download the COOPER-AMG directly.
 sh ./scripts/train_mix.sh
 
-# training for interleaved reasoning SFT
+# Training for interleaved reasoning SFT.
 sh ./scripts/train_reason_interleave_sft.sh
 
-# training for interleaved reasoning GRPO
+# Training for interleaved reasoning GRPO.
 sh ./scripts/train_reason_interleave_grpo.sh
 ```
 
@@ -94,8 +102,8 @@ sh ./scripts/train_reason_interleave_grpo.sh
 ### 📐 Eval
 
 ```bash
-# you can edit the eval config in /VLMEvalKit/eval_cfg/bagel_with_judge.json
-# set your openai api key in eval_bagel_with_judge.sh and /VLMEvalKit/.env first
+# You can edit the eval config in /VLMEvalKit/eval_cfg/bagel_with_judge.json.
+# Set your openai api key in eval_bagel_with_judge.sh and /VLMEvalKit/.env first.
 cd VLMEvalKit
 sh eval_bagel_with_judge.sh
 ```
