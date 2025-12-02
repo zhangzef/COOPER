@@ -32,15 +32,22 @@ cd models
 # download the pretrained BAGEL and its config files
 huggingface-cli download --resume-download --local-dir-use-symlinks False ByteDance-Seed/BAGEL-7B-MoT --local-dir BAGEL-7B-MoT
 
-# download the COOPER-AMG ckpt(training with )
+# not necessary
+# download the COOPER-AMG ckpt(training with Auxiliary Modality Generation)
 huggingface-cli download --resume-download --local-dir-use-symlinks False Starrrrrry/COOPER-AMG --local-dir COOPER-AMG
 
-# download the COOPER ckpt
+# not necessary
+# download the COOPER ckpt if you want to inference with COOPER
 huggingface-cli download --resume-download --local-dir-use-symlinks False Starrrrrry/COOPER --local-dir COOPER
 
 # download the training data(without Hypersim)
 cd ..
 huggingface-cli download --resume-download --repo-type dataset Starrrrrry/COOPER_Train_Set --local-dir datasets
+cd datasets
+# merge the dataset with multiple threads(if you have pigz)(recommended)
+cat COOPER_Train_Set.tar.gz.part.* | pigz -d | tar xf -
+# OR merge the dataset with single thread(if you don't have pigz)
+cat COOPER_Train_Set.tar.gz.part.* | gzip -dc | tar xf -
 ```
 
 
