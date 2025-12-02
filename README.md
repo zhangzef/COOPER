@@ -1,4 +1,4 @@
-# COOPER
+# COOPER 🧭
 
 This project implements **COOPER**, a unified multimodal large language model for visual spatial intelligence that cooperatively couples perception and reasoning. Initially developed on top of the **BAGEL** framework to endow a single model with intrinsic perception enhancement (depth estimation, semantic segmentation) and reasoning enhancement via multimodal chain-of-thought, we further extend COOPER with reinforcement learning and a cooperative perception–reasoning reward to adaptively decide when to “perceive” and when to “reason” during inference.
 
@@ -7,10 +7,34 @@ This project implements **COOPER**, a unified multimodal large language model fo
 ![model](./assests/model.png)
 
 
+## 🚀 Key Features
+
+- 🧠 **GRPO Training for BAGEL via TRL**
+COOPER provides plug-and-play support for **Group Relative Policy Optimization (GRPO)** training built on top of **Hugging Face TRL**.  This allows you to:
+    - Fine-tune BAGEL-style multimodal models with RL-style objectives.
+    - Optimize perception–reasoning behavior directly from feedback signals.
+    - Seamlessly extend from supervised multimodal CoT training to RL-based refinement.
+
+- 📊 **VLMEvalKit Integration for BAGEL**
+We adapt **BAGEL** to the **VLMEvalKit** evaluation framework, enabling:
+    - One-line evaluation on a wide range of multimodal benchmarks.
+    - Unified interfaces for dataset loading, inference, and result aggregation.
+    - Direct comparison with other VLMs under consistent evaluation protocols.
+
+- 🧩 **SIBench Single-Image Benchmark + GPT/Deepseek Answer Extraction**
+The **single-image subset of SIBench**, a comprehensive spatial reasoning benchmark, is:
+    - Fully integrated into **VLMEvalKit** as a first-class evaluation task.
+    - Equipped with **GPT/Deepseek-based answer extractors** to:
+    - Robustly parse free-form model outputs.
+    - Reduce evaluation noise from formatting and phrasing.
+    - Provide more accurate and reliable spatial reasoning scores.
+
+---
+
 
 ## 🔥 Quick Start
 
-1️⃣ Set up environment
+1️⃣ **Set up environment 🛠️**
 
 ```bash
 git clone https://github.com/zhangzef/COOPER.git
@@ -25,7 +49,7 @@ pip install -e ./trl
 
 
 
-2️⃣ Download checkpoints and datasets
+2️⃣ Download checkpoints and datasets 📥
 
 ```bash
 cd models
@@ -52,9 +76,9 @@ cat COOPER_Train_Set.tar.gz.part.* | gzip -dc | tar xf -
 
 
 
-## 🔥 Train & Eval
+## 🔥 Train & Eval 🧪
 
-### Train
+### 🏋️ Train
 
 ```bash
 # training for Auxiliary Modality Generation from BAGEL
@@ -70,7 +94,7 @@ sh ./scripts/train_reason_interleave_grpo.sh
 
 
 
-### Eval
+### 📐 Eval
 
 ```bash
 # you can edit the eval config in /VLMEvalKit/eval_cfg/bagel_with_judge.json
@@ -81,34 +105,26 @@ sh eval_bagel_with_judge.sh
 
 
 
-## Results
+## 📈 Results
 
 ![main_result](./assests/main_result.png)
 
 
 
-### Cases
+### 📚 Cases
 
-![generation_cases](./assests/generation_cases.png)
+You can find more cases in the `./assests` folder.
 
-
-
-![seg_comp](./assests/seg_comp.png)
+![cases](./assests/cases.png)
 
 
 
-![depth_comp](./assests/depth_comp.png)
+![depth_mini](./assests/depth_mini.jpg)
 
 
 
-![depth_good_0](./assests/depth_good_0.png)
+![seg_mini](./assests/seg_mini.jpg)
 
-
-
-![seg_good_0](./assests/seg_good_0.png)
-
-
-
-![depth_bad_0](./assests/depth_bad_0.png)
 
 ## ✍️ Citation
+Our paper is cominng soon.
