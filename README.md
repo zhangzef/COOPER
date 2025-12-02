@@ -7,7 +7,7 @@
   📂 <a href="https://huggingface.co/datasets/Starrrrrry/COOPER_Train_Set">COOPER Training Data</a>
 </p>
 
-This project is the official implements **COOPER**, a unified multimodal large language model for visual spatial intelligence that cooperatively couples perception and reasoning. Initially developed on top of the **BAGEL** framework to endow a single model with intrinsic perception enhancement (depth estimation, semantic segmentation) and reasoning enhancement via multimodal chain-of-thought, we further extend COOPER with reinforcement learning and a cooperative perception–reasoning reward to adaptively decide when to “perceive” and when to “reason” during inference.
+This project provides the **official implementation of COOPER**, a **unified multimodal large language model for visual spatial intelligence** that **cooperatively couples perception and reasoning**. Built on top of the **BAGEL** framework, COOPER endows a single model with **intrinsic perception enhancement** (e.g., **depth estimation** and **semantic segmentation**) and **reasoning enhancement via multimodal chain-of-thought**. We further extend COOPER with **reinforcement learning** and a **cooperative perception–reasoning reward**, enabling the model to **adaptively decide when to “perceive” and when to “reason”** during inference.
 
 ![motivation](./assests/motivation.png)
 
