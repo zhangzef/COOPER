@@ -19,7 +19,7 @@ This project implements **COOPER**, a unified multimodal large language model fo
     - Unified interfaces for dataset loading, inference, and result aggregation.
     - Direct comparison with other VLMs under consistent evaluation protocols.
 
-- 🧩 **SIBench Single-Image Benchmark + GPT/Deepseek Answer Extraction**:
+- 🧩 **[SIBench](https://sibench.github.io/Awesome-Visual-Spatial-Reasoning/) Single-Image Benchmark + GPT/Deepseek Answer Extraction**:
     - Fully integrated into **VLMEvalKit** as a first-class evaluation task.
     - Equipped with **GPT/Deepseek-based answer extractors** to:
     - Robustly parse free-form model outputs.
