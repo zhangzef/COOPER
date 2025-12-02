@@ -9,20 +9,17 @@ This project implements **COOPER**, a unified multimodal large language model fo
 
 ## 🚀 Key Features
 
-- 🧠 **GRPO Training for BAGEL via TRL**
-COOPER provides plug-and-play support for **Group Relative Policy Optimization (GRPO)** training built on top of **Hugging Face TRL**.  This allows you to:
+- 🧠 **GRPO Training for BAGEL via TRL**:
     - Fine-tune BAGEL-style multimodal models with RL-style objectives.
     - Optimize perception–reasoning behavior directly from feedback signals.
     - Seamlessly extend from supervised multimodal CoT training to RL-based refinement.
 
-- 📊 **VLMEvalKit Integration for BAGEL**
-We adapt **BAGEL** to the **VLMEvalKit** evaluation framework, enabling:
+- 📊 **VLMEvalKit Integration for BAGEL**:
     - One-line evaluation on a wide range of multimodal benchmarks.
     - Unified interfaces for dataset loading, inference, and result aggregation.
     - Direct comparison with other VLMs under consistent evaluation protocols.
 
-- 🧩 **SIBench Single-Image Benchmark + GPT/Deepseek Answer Extraction**
-The **single-image subset of SIBench**, a comprehensive spatial reasoning benchmark, is:
+- 🧩 **SIBench Single-Image Benchmark + GPT/Deepseek Answer Extraction**:
     - Fully integrated into **VLMEvalKit** as a first-class evaluation task.
     - Equipped with **GPT/Deepseek-based answer extractors** to:
     - Robustly parse free-form model outputs.
