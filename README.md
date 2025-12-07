@@ -1,7 +1,7 @@
 # COOPER 🧭
 
 <p align="center">
-  📄 <b>Paper (Coming Soon)</b> |
+  📄 <a href="https://arxiv.org/pdf/2512.04563">Paper</a> |
   🤖 <a href="https://huggingface.co/Starrrrrry/COOPER">COOPER Model</a> |
   🧠 <a href="https://huggingface.co/Starrrrrry/COOPER-AMG">COOPER-AMG Model</a> |
   📂 <a href="https://huggingface.co/datasets/Starrrrrry/COOPER_Train_Set">COOPER Training Data</a>
@@ -9,9 +9,13 @@
 
 This project provides the **official implementation of COOPER**, a **unified multimodal large language model for visual spatial intelligence** that **cooperatively couples perception and reasoning**. Built on top of the **BAGEL** framework, COOPER endows a single model with **intrinsic perception enhancement** (e.g., **depth estimation** and **semantic segmentation**) and **reasoning enhancement via multimodal chain-of-thought**. We further extend COOPER with **reinforcement learning** and a **cooperative perception–reasoning reward**, enabling the model to **adaptively decide when to “perceive” and when to “reason”** during inference.
 
-![motivation](./assests/motivation.png)
+<!-- ![motivation](./assets/motivation.png) -->
 
-![model](./assests/model.png)
+<p align="center">
+  <img src="./assets/motivation.png" width="50%" />
+</p>
+
+![model](./assets/model.png)
 
 
 ## 🚀 Key Features
@@ -112,20 +116,28 @@ sh eval_bagel_with_judge.sh
 
 ## 📈 Results
 
-![main_result](./assests/main_result.png)
+![main_result](./assets/main_result.png)
 
 
 
 ### 📚 Cases
 
-You can find more cases in the `./assests` folder.
+You can find more cases in the `./assets` folder.
 
-![cases](./assests/cases.png)
+![cases](./assets/cases.png)
 
 
 
-![generation_cases](./assests/generation_cases.png)
+![generation_cases](./assets/generation_cases.png)
 
 
 ## ✍️ Citation
-Our paper is cominng soon.
+
+```bibtex
+@article{zhang2025cooper,
+  title={COOPER: A Unified Model for Cooperative Perception and Reasoning in Spatial Intelligence},
+  author={Zhang, Zefeng and Hao, Xiangzhao and Tang, Hengzhu and Zhang, Zhenyu and Sheng, Jiawei and Li, Xiaodong and Li, Zhenyang and Gao, Li and Shi, Daiting and Yin, Dawei and others},
+  journal={arXiv preprint arXiv:2512.04563},
+  year={2025}
+}
+```
