@@ -6,8 +6,7 @@
             "model_param_path": "../results/20250908_001731_mix/0006000",
             "reasoning_mode": "image",
             "max_think_token_n": 256,
-            "is_ema": true,
-            "save_file": "Perception_Ehancement"
+            "is_ema": true
         },
         "BAGEL-RE": {
             "class": "BagelInference",
