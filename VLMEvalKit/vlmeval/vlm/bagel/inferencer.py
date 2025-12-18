@@ -6,8 +6,8 @@ from typing import List, Dict, Optional, Union, Any
 import io, base64
 from PIL import Image
 import torch
-from data.data_utils import pil_img2rgb
-from modeling.bagel.qwen2_navit import NaiveCache
+from .data.data_utils import pil_img2rgb
+from .modeling.bagel.qwen2_navit import NaiveCache
 import re
 import numpy as np
 import matplotlib
