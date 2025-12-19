@@ -17,8 +17,8 @@ This project provides the **official implementation of COOPER**, a **unified mul
 
 ![model](./assets/model.png)
 
-## News
-- [2025/12] 🔥 [vllm](https://docs.vllm.ai/projects/vllm-omni/en/latest/design/architecture_overview/) now support BAGEL，you can try to modify the code of BagelInterleaveGRPOTrainer to accelerate the BAGEL rollout process!
+
+<!-- ## News -->
 
 ## 🚀 Key Features
 
