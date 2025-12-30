@@ -1,0 +1,225 @@
+[[34m2025-12-30 16:38:12[0m] Training arguments TrainingArguments(visual_gen=True, visual_und=True, results_dir='results', checkpoint_dir='./results/20251230_163731_mix', wandb_project='bagel', wandb_name='20251230_163731_mix', wandb_runid='20251230_163731_mix', wandb_resume='never', wandb_offline=False, global_seed=4396, auto_resume=False, resume_from='./models/BAGEL-7B-MoT', resume_model_only=True, finetune_from_ema=True, finetune_from_hf=True, log_every=1, save_every=2000, total_steps=6000, warmup_steps=500, lr_scheduler='constant', lr=5e-06, min_lr=1e-07, beta1=0.9, beta2=0.95, eps=1e-15, ema=0.995, max_grad_norm=1.0, timestep_shift=1.0, mse_weight=1.0, ce_weight=1.0, ce_loss_reweighting=False, expected_num_tokens=10240, num_replicate=1, num_shard=8, sharding_strategy='HYBRID_SHARD', backward_prefetch='BACKWARD_PRE', cpu_offload=False, train_only_generator=False, train_only_llm2vae=False, freeze_llm='not', freeze_vit=True, freeze_vae=True, freeze_und=False, copy_init_moe=True, use_flex=True)
+[[34m2025-12-30 16:38:12[0m] Model arguments ModelArguments(model_path='./models/BAGEL-7B-MoT', llm_path='hf/Qwen2.5-0.5B-Instruct/', llm_qk_norm=True, tie_word_embeddings=False, layer_module='Qwen2MoTDecoderLayer', vae_path='flux/vae/ae.safetensors', vit_path='hf/siglip-so400m-14-980-flash-attn2-navit/', max_latent_size=64, latent_patch_size=2, vit_patch_size=14, vit_max_num_patch_per_side=70, connector_act='gelu_pytorch_tanh', interpolate_pos=False, vit_select_layer=-2, vit_rope=False, text_cond_dropout_prob=0.0, vae_cond_dropout_prob=0.0, vit_cond_dropout_prob=0.0)
+[[34m2025-12-30 16:38:12[0m] Data arguments DataArguments(dataset_config_file='./data/configs/dense_predict_mix.yaml', prefetch_factor=2, num_workers=1, max_num_tokens_per_sample=10240, max_num_tokens=10240, prefer_buffer_before=16384, max_buffer_size=50, data_seed=42)
+[计时] 设置日志和wandb: 23.6835秒
+[计时] 处理自动恢复逻辑: 0.0000秒
+[计时] 设置随机种子: 0.0024秒
+/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/Bagel/transformers-4.54.0/src/transformers/configuration_utils.py:334: UserWarning: Passing `gradient_checkpointing` to a config initialization is deprecated and will be removed in v5 Transformers. Using `model.gradient_checkpointing_enable()` instead, or if you are using the `Trainer` API, pass `gradient_checkpointing=True` in your `TrainingArguments`.
+  warnings.warn(
+[计时] 加载和初始化语言模型config: 0.0007秒
+[计时] 加载语言模型: 143.9712秒
+[计时] 初始化语言模型: 10.7655秒
+[计时] 加载和初始化视觉模型: 5.5893秒
+[计时] 加载和初始化Bagel: 0.7883秒
+[计时] 初始化Tokenizer: 0.1867秒
+[计时] 配置参数冻结: 0.0022秒
+use_orig_params: False
+[[34m2025-12-30 16:41:19[0m] Loading checkpoint from ./models/BAGEL-7B-MoT.
+[[34m2025-12-30 16:41:54[0m] _IncompatibleKeys(missing_keys=['latent_pos_embed.pos_embed', 'vit_pos_embed.pos_embed'], unexpected_keys=[])
+[[34m2025-12-30 16:42:13[0m] _IncompatibleKeys(missing_keys=['latent_pos_embed.pos_embed', 'vit_pos_embed.pos_embed'], unexpected_keys=[])
+FullyShardedDataParallel(
+  (_fsdp_wrapped_module): Bagel(
+    (language_model): Qwen2ForCausalLM(
+      (model): Qwen2Model(
+        (embed_tokens): Embedding(152064, 3584)
+        (layers): ModuleList(
+          (0-27): 28 x FullyShardedDataParallel(
+            (_fsdp_wrapped_module): CheckpointWrapper(
+              (_checkpoint_wrapped_module): Qwen2MoTDecoderLayer(
+                (self_attn): PackedAttentionMoT(
+                  (q_proj): Linear(in_features=3584, out_features=3584, bias=True)
+                  (k_proj): Linear(in_features=3584, out_features=512, bias=True)
+                  (v_proj): Linear(in_features=3584, out_features=512, bias=True)
+                  (o_proj): Linear(in_features=3584, out_features=3584, bias=False)
+                  (q_norm): Qwen2RMSNorm((128,), eps=1e-06)
+                  (k_norm): Qwen2RMSNorm((128,), eps=1e-06)
+                  (q_norm_moe_gen): Qwen2RMSNorm((128,), eps=1e-06)
+                  (k_norm_moe_gen): Qwen2RMSNorm((128,), eps=1e-06)
+                  (q_proj_moe_gen): Linear(in_features=3584, out_features=3584, bias=True)
+                  (k_proj_moe_gen): Linear(in_features=3584, out_features=512, bias=True)
+                  (v_proj_moe_gen): Linear(in_features=3584, out_features=512, bias=True)
+                  (o_proj_moe_gen): Linear(in_features=3584, out_features=3584, bias=False)
+                )
+                (mlp): Qwen2MLP(
+                  (gate_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (up_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (down_proj): Linear(in_features=18944, out_features=3584, bias=False)
+                  (act_fn): SiLU()
+                )
+                (mlp_moe_gen): Qwen2MLP(
+                  (gate_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (up_proj): Linear(in_features=3584, out_features=18944, bias=False)
+                  (down_proj): Linear(in_features=18944, out_features=3584, bias=False)
+                  (act_fn): SiLU()
+                )
+                (input_layernorm): Qwen2RMSNorm((3584,), eps=1e-06)
+                (input_layernorm_moe_gen): Qwen2RMSNorm((3584,), eps=1e-06)
+                (post_attention_layernorm): Qwen2RMSNorm((3584,), eps=1e-06)
+                (post_attention_layernorm_moe_gen): Qwen2RMSNorm((3584,), eps=1e-06)
+              )
+            )
+          )
+        )
+        (norm): Qwen2RMSNorm((3584,), eps=1e-06)
+        (norm_moe_gen): Qwen2RMSNorm((3584,), eps=1e-06)
+        (rotary_emb): Qwen2RotaryEmbedding()
+      )
+      (lm_head): Linear(in_features=3584, out_features=152064, bias=False)
+    )
+    (time_embedder): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): TimestepEmbedder(
+        (mlp): Sequential(
+          (0): Linear(in_features=256, out_features=3584, bias=True)
+          (1): SiLU()
+          (2): Linear(in_features=3584, out_features=3584, bias=True)
+        )
+      )
+    )
+    (vae2llm): Linear(in_features=64, out_features=3584, bias=True)
+    (llm2vae): Linear(in_features=3584, out_features=64, bias=True)
+    (latent_pos_embed): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): PositionEmbedding()
+    )
+    (vit_model): SiglipVisionModel(
+      (vision_model): FullyShardedDataParallel(
+        (_fsdp_wrapped_module): SiglipVisionTransformer(
+          (embeddings): SiglipVisionEmbeddings(
+            (position_embedding): Embedding(4900, 1152)
+            (patch_embedding): Linear(in_features=588, out_features=1152, bias=True)
+          )
+          (encoder): SiglipEncoder(
+            (layers): ModuleList(
+              (0-25): 26 x FullyShardedDataParallel(
+                (_fsdp_wrapped_module): CheckpointWrapper(
+                  (_checkpoint_wrapped_module): SiglipEncoderLayer(
+                    (self_attn): SiglipFlashAttention2(
+                      (k_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                      (v_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                      (q_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                      (out_proj): Linear(in_features=1152, out_features=1152, bias=True)
+                    )
+                    (layer_norm1): LayerNorm((1152,), eps=1e-06, elementwise_affine=True)
+                    (mlp): SiglipMLP(
+                      (activation_fn): PytorchGELUTanh()
+                      (fc1): Linear(in_features=1152, out_features=4304, bias=True)
+                      (fc2): Linear(in_features=4304, out_features=1152, bias=True)
+                    )
+                    (layer_norm2): LayerNorm((1152,), eps=1e-06, elementwise_affine=True)
+                  )
+                )
+              )
+            )
+          )
+          (post_layernorm): LayerNorm((1152,), eps=1e-06, elementwise_affine=True)
+        )
+      )
+    )
+    (connector): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): CheckpointWrapper(
+        (_checkpoint_wrapped_module): MLPconnector(
+          (activation_fn): PytorchGELUTanh()
+          (fc1): Linear(in_features=1152, out_features=3584, bias=True)
+          (fc2): Linear(in_features=3584, out_features=3584, bias=True)
+        )
+      )
+    )
+    (vit_pos_embed): FullyShardedDataParallel(
+      (_fsdp_wrapped_module): PositionEmbedding()
+    )
+  )
+)
+_flat_param True
+language_model.model.layers.0._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.1._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.2._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.3._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.4._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.5._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.6._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.7._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.8._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.9._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.10._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.11._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.12._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.13._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.14._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.15._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.16._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.17._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.18._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.19._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.20._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.21._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.22._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.23._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.24._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.25._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.26._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+language_model.model.layers.27._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+time_embedder._fsdp_wrapped_module._flat_param True
+latent_pos_embed._fsdp_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.0._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.1._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.2._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.3._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.4._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.5._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.6._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.7._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.8._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.9._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.10._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.11._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.12._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.13._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.14._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.15._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.16._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.17._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.18._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.19._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.20._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.21._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.22._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.23._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.24._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+vit_model.vision_model._fsdp_wrapped_module.encoder.layers.25._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param False
+connector._fsdp_wrapped_module._checkpoint_wrapped_module._flat_param True
+vit_pos_embed._fsdp_wrapped_module._flat_param False
+[计时] 配置FSDP和加载检查点: 111.1270秒
+[计时] 初始化优化器和调度器: 0.0018秒
+[计时] 恢复训练状态: 0.0000秒
+Preparing Dataset vkitti/vkitti
+[vkitti] init dataset
+Preparing Dataset hypersim/hypersim
+[hypersim] init dataset
+Traceback (most recent call last):
+  File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/train/pretrain_unified_depth.py", line 923, in <module>
+    main()
+  File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/train/pretrain_unified_depth.py", line 732, in main
+    train_dataset = PackedDataset(
+  File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/dataset_base_depth.py", line 77, in __init__
+    grouped_datasets, is_mandatory, grouped_weights = self.build_datasets(
+  File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/dataset_base_depth.py", line 152, in build_datasets
+    dataset = DATASET_REGISTRY[grouped_dataset_name](
+  File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/depth_datasets/interleave_base.py", line 151, in __init__
+    self.data_paths = self.get_data_paths(
+  File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/depth_datasets/interleave_base.py", line 178, in get_data_paths
+    with open(jsonl_path, "r", encoding="utf-8") as f:
+FileNotFoundError: [Errno 2] No such file or directory: './datasets/Hypersim/filename_list_train_filtered.jsonl'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/train/pretrain_unified_depth.py", line 923, in <module>
+[rank0]:     main()
+[rank0]:   File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/train/pretrain_unified_depth.py", line 732, in main
+[rank0]:     train_dataset = PackedDataset(
+[rank0]:   File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/dataset_base_depth.py", line 77, in __init__
+[rank0]:     grouped_datasets, is_mandatory, grouped_weights = self.build_datasets(
+[rank0]:   File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/dataset_base_depth.py", line 152, in build_datasets
+[rank0]:     dataset = DATASET_REGISTRY[grouped_dataset_name](
+[rank0]:   File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/depth_datasets/interleave_base.py", line 151, in __init__
+[rank0]:     self.data_paths = self.get_data_paths(
+[rank0]:   File "/root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/data/depth_datasets/interleave_base.py", line 178, in get_data_paths
+[rank0]:     with open(jsonl_path, "r", encoding="utf-8") as f:
+[rank0]: FileNotFoundError: [Errno 2] No such file or directory: './datasets/Hypersim/filename_list_train_filtered.jsonl'

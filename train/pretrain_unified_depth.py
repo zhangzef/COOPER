@@ -488,6 +488,9 @@ def main():
     else:
         llm_config = Qwen2Config.from_pretrained(model_args.llm_path)
     llm_config.freeze_und = training_args.freeze_und
+    llm_config.layer_module = model_args.layer_module
+    llm_config.qk_norm = model_args.llm_qk_norm
+    llm_config.tie_word_embeddings = model_args.tie_word_embeddings
     llm_config.gradient_checkpointing = True
     end_time = time.time()
     if dist.get_rank() == 0:

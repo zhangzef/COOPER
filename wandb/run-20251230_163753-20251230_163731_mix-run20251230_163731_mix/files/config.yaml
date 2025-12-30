@@ -1,0 +1,301 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            6pci1pev23zqwag60saqykcz95q22ez1:
+                args:
+                    - --dataset_config_file
+                    - ./data/configs/dense_predict_mix.yaml
+                    - --checkpoint_dir
+                    - ./results/20251230_163731_mix
+                    - --model_path
+                    - ./models/BAGEL-7B-MoT
+                    - --layer_module
+                    - Qwen2MoTDecoderLayer
+                    - --max_latent_size
+                    - "64"
+                    - --resume-from
+                    - ./models/BAGEL-7B-MoT
+                    - --finetune_from_hf
+                    - "True"
+                    - --auto_resume
+                    - "False"
+                    - --resume-model-only
+                    - "True"
+                    - --finetune-from-ema
+                    - "True"
+                    - --visual_gen
+                    - "True"
+                    - --visual_und
+                    - "True"
+                    - --freeze_vit
+                    - "True"
+                    - --freeze_llm
+                    - not
+                    - --log_every
+                    - "1"
+                    - --vit_cond_dropout_prob
+                    - "0"
+                    - --vae_cond_dropout_prob
+                    - "0"
+                    - --text_cond_dropout_prob
+                    - "0"
+                    - --wandb_name
+                    - 20251230_163731_mix
+                    - --wandb_runid
+                    - 20251230_163731_mix
+                    - --cpu_offload
+                    - "False"
+                    - --use_flex
+                    - "True"
+                    - --lr
+                    - "5e-6"
+                    - --ema
+                    - "0.995"
+                    - --ce_weight
+                    - "1.0"
+                    - --num_worker
+                    - "1"
+                    - --total_steps
+                    - "6000"
+                    - --save_every
+                    - "2000"
+                    - --expected_num_tokens
+                    - "10240"
+                    - --max_num_tokens
+                    - "10240"
+                    - --max_num_tokens_per_sample
+                    - "10240"
+                codePath: train/pretrain_unified_depth.py
+                codePathLocal: train/pretrain_unified_depth.py
+                cpu_count: 96
+                cpu_count_logical: 192
+                cudaVersion: "12.9"
+                disk:
+                    /:
+                        total: "3780282875904"
+                        used: "2925860667392"
+                email: tigerlhh18@gmail.com
+                executable: /root/miniconda3/envs/bagel_eval/bin/python3.1
+                git:
+                    commit: 867a7960aed9312ea439e4fac837a03d7dddcb60
+                    remote: https://github.com/zhangzef/COOPER.git
+                gpu: NVIDIA H800
+                gpu_count: 8
+                gpu_nvidia:
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-0f74d854-0d68-bf6a-1e23-e081f1398d63
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-0a17cdf4-e04d-ec46-ab3a-36e6c303dd9c
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-2e039924-55fd-8e9c-e44e-5711cbad4f8d
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-62accb90-b3fe-b29b-838b-384237b706bf
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-cdfb0b15-d6ad-edd9-6893-6c59dd22cfc4
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-e5079c69-55ef-c7cb-2854-698bf136a76b
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-cca0f95a-1943-3ca8-fbcc-ee2e27c53364
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H800
+                      uuid: GPU-cd7aa2cf-c8a4-e00e-38cb-c907524dff91
+                host: szzj-inf-sci-k8s-hzz1-h72ni7-0342.szzj.baidu.com
+                memory:
+                    total: "3246459400192"
+                os: Linux-5.15.0-124-generic-x86_64-with-glibc2.39
+                program: /root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER/train/pretrain_unified_depth.py
+                python: CPython 3.10.0
+                root: /root/paddlejob/workspace/output/zzf/codes/VisualSketchpad/ar_model/COOPER
+                startedAt: "2025-12-30T08:37:53.550819Z"
+                writerId: 6pci1pev23zqwag60saqykcz95q22ez1
+        m: []
+        python_version: 3.10.0
+        t:
+            "1":
+                - 1
+                - 11
+                - 41
+                - 49
+                - 71
+                - 105
+            "2":
+                - 1
+                - 11
+                - 41
+                - 49
+                - 71
+                - 105
+            "3":
+                - 13
+                - 14
+            "4": 3.10.0
+            "5": 0.21.0
+            "6": 4.54.0
+            "12": 0.21.0
+            "13": linux-x86_64
+auto_resume:
+    value: false
+backward_prefetch:
+    value: BACKWARD_PRE
+beta1:
+    value: 0.9
+beta2:
+    value: 0.95
+ce_loss_reweighting:
+    value: false
+ce_weight:
+    value: 1
+checkpoint_dir:
+    value: ./results/20251230_163731_mix
+connector_act:
+    value: gelu_pytorch_tanh
+copy_init_moe:
+    value: true
+cpu_offload:
+    value: false
+data_seed:
+    value: 42
+dataset_config_file:
+    value: ./data/configs/dense_predict_mix.yaml
+ema:
+    value: 0.995
+eps:
+    value: 1e-15
+expected_num_tokens:
+    value: 10240
+finetune_from_ema:
+    value: true
+finetune_from_hf:
+    value: true
+freeze_llm:
+    value: not
+freeze_und:
+    value: false
+freeze_vae:
+    value: true
+freeze_vit:
+    value: true
+global_seed:
+    value: 4396
+interpolate_pos:
+    value: false
+latent_patch_size:
+    value: 2
+layer_module:
+    value: Qwen2MoTDecoderLayer
+llm_path:
+    value: hf/Qwen2.5-0.5B-Instruct/
+llm_qk_norm:
+    value: true
+log_every:
+    value: 1
+lr:
+    value: 5e-06
+lr_scheduler:
+    value: constant
+max_buffer_size:
+    value: 50
+max_grad_norm:
+    value: 1
+max_latent_size:
+    value: 64
+max_num_tokens:
+    value: 10240
+max_num_tokens_per_sample:
+    value: 10240
+min_lr:
+    value: 1e-07
+model_path:
+    value: ./models/BAGEL-7B-MoT
+mse_weight:
+    value: 1
+num_replicate:
+    value: 1
+num_shard:
+    value: 8
+num_workers:
+    value: 1
+prefer_buffer_before:
+    value: 16384
+prefetch_factor:
+    value: 2
+results_dir:
+    value: results
+resume_from:
+    value: ./models/BAGEL-7B-MoT
+resume_model_only:
+    value: true
+save_every:
+    value: 2000
+sharding_strategy:
+    value: HYBRID_SHARD
+text_cond_dropout_prob:
+    value: 0
+tie_word_embeddings:
+    value: false
+timestep_shift:
+    value: 1
+total_steps:
+    value: 6000
+train_only_generator:
+    value: false
+train_only_llm2vae:
+    value: false
+use_flex:
+    value: true
+vae_cond_dropout_prob:
+    value: 0
+vae_path:
+    value: flux/vae/ae.safetensors
+visual_gen:
+    value: true
+visual_und:
+    value: true
+vit_cond_dropout_prob:
+    value: 0
+vit_max_num_patch_per_side:
+    value: 70
+vit_patch_size:
+    value: 14
+vit_path:
+    value: hf/siglip-so400m-14-980-flash-attn2-navit/
+vit_rope:
+    value: false
+vit_select_layer:
+    value: -2
+wandb_name:
+    value: 20251230_163731_mix
+wandb_offline:
+    value: false
+wandb_project:
+    value: bagel
+wandb_resume:
+    value: never
+wandb_runid:
+    value: 20251230_163731_mix
+warmup_steps:
+    value: 500

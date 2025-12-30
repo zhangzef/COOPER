@@ -490,6 +490,9 @@ def main():
         os.path.join(eval_args.model_path, "llm_config.json")
     )
     llm_config.freeze_und = True
+    llm_config.layer_module = "Qwen2MoTDecoderLayer"
+    llm_config.qk_norm = True
+    llm_config.tie_word_embeddings = False
     llm_config.gradient_checkpointing = False
 
     vit_config = SiglipVisionConfig.from_json_file(
