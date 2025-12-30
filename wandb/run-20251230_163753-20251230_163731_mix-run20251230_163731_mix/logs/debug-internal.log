@@ -1,7 +1,0 @@
-{"time":"2025-12-30T16:37:53.767140075+08:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
-{"time":"2025-12-30T16:37:55.716037076+08:00","level":"INFO","msg":"stream: created new stream","id":"20251230_163731_mix-run20251230_163731_mix"}
-{"time":"2025-12-30T16:37:55.716073019+08:00","level":"INFO","msg":"stream: started","id":"20251230_163731_mix-run20251230_163731_mix"}
-{"time":"2025-12-30T16:37:55.716083592+08:00","level":"INFO","msg":"sender: started","stream_id":"20251230_163731_mix-run20251230_163731_mix"}
-{"time":"2025-12-30T16:37:55.716082503+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"20251230_163731_mix-run20251230_163731_mix"}
-{"time":"2025-12-30T16:37:55.716102918+08:00","level":"INFO","msg":"handler: started","stream_id":"20251230_163731_mix-run20251230_163731_mix"}
-{"time":"2025-12-30T16:42:45.900896855+08:00","level":"INFO","msg":"stream: closing","id":"20251230_163731_mix-run20251230_163731_mix"}
